@@ -87,14 +87,21 @@ def count_sort(arr):
         count_array = [0]*(maximum+1)
         print(maximum)
 
-        for i in range(len(arr)):
-            count_array[arr[i]] += 1
+        for num in arr:
+            count_array[num] += 1
+        #instead of for i in range(len(arr)): etc. - only do this when you need the index
 
-        sorted_array = []
+        # sorted_array = []
+
+        k = 0
 
         for j, num in enumerate(count_array):
             while num > 0:
-                sorted_array.append(j)
+                arr[k] = j
+                k += 1
                 num -= 1
+            # while num > 0:
+            #     sorted_array.append(j)
+            #     num -= 1
 
-        return sorted_array
+        return arr
