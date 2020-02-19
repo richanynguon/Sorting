@@ -35,8 +35,6 @@ def binary_search_insertion(target, arr):
 def merge_gallop(arrA, arrB):
     '''
     merged_arr = []
-    before = 0
-    after = 0
     galloping_elements= []
 
     ## edge case 
@@ -58,6 +56,10 @@ def merge_gallop(arrA, arrB):
     
         insert galloping_elements into arrA at that index
 
+    return new array
+
+    **** insert arrA[i] into new merged array then compare arrA[i] and arr[i+1] if arrB elements in range if so the push into 
+    new merged array
   
     '''
     pass
