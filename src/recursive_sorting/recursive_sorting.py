@@ -29,19 +29,20 @@ def merge(arrA, arrB):
 # return [:middle] [middle:]
 # this is done until there is one value
 # calls merge on both part of splitted array together after merge sort
-def find_pivot(leng):
+def find_middle(leng):
     return int(leng/2)
 
 
-def implement_pivot(arr):
-    pivot = find_pivot(len(arr))
-    before = arr[pivot:]
-    after = arr[:pivot]
+def implement_middle(arr):
+    middle = find_middle(len(arr))
+    before = arr[middle:]
+    after = arr[:middle]
     return before, after
 
+## before and after should be left and right
 
 def merge_sort(arr):
-    before, after = implement_pivot(arr)
+    before, after = implement_middle(arr)
     if len(arr) <= 1:
         return arr
     else:
@@ -71,12 +72,12 @@ def merge_sort_in_place(arr, l, r):
     # TO-DO
     # lil confusing about how the function stacks
     if l < r:
-        pivot = find_pivot(l+r)
-        merge_sort_in_place(arr, l, pivot)
+        middle = find_middle(l+r)
+        merge_sort_in_place(arr, l, middle)
         #will stack first and complete its side
-        merge_sort_in_place(arr, pivot+1, r)
+        merge_sort_in_place(arr, middle+1, r)
         # will stack next until complete
-        merge_in_place(arr, l, pivot, r)
+        merge_in_place(arr, l, middle, r)
         # will stack next until complete
     return arr
 
