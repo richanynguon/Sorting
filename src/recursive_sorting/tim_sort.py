@@ -1,65 +1,31 @@
-def find_pivot(leng):
-    return int(leng/2)
+import random
+import math
 
 
-def implement_pivot(arr):
-    pivot = find_pivot(len(arr))
-    before = arr[pivot:]
-    after = arr[:pivot]
-    return before, after
-
-
-def binary_search(arr, target, low, high):
-    pivot = find_pivot(low+high)
-    if low == high:
-        if arr[low] > target:
-            return low
-        else:
-            return low + 1
-    if low > high:
-        return low
-    elif arr[pivot] > target:
-        return binary_search(arr, target, low, pivot - 1)
-    elif arr[pivot] < target:
-        return binary_search(arr, target, pivot + 1, high)
+def detect_runs(min_run, arr):
+    if len(arr) % min_run == 0:
+        array = arr
     else:
-        return pivot
+        array = arr[:-1]
+        odd_out = arr[-1]
+    print(array)
+    print(odd_out)
+    # for i in range(len(arr)):
+    #     print(arr[i])
+    #     if arr[i+1] - arr[i] >= 0:
+    #         # if increasing - save index
+    #         # check next one
+    #         pass
+    #     else:
+    #         pass
+
+def tim_sort(arr):
+    MAX_SPLIT = 32
+    MIN_RUN = 4
+            
 
 
-def insertion_sort(list_to_sort):
-    for i in range(1, len(list_to_sort)):
-        temp = list_to_sort[i]
-        j = binary_search(list_to_sort, temp, 0, i-1)
-        list_to_sort = list_to_sort[:j] + [temp] + list_to_sort[j:i] + [list_to_sort[i+1]]
-    return list_to_sort
 
 
-print(insertion_sort([1, 2, 34, 56, 7, 34, 6, 4]))
 
-
-def merge(arrA, arrB):
-    merged_arr = []
-
-    before = 0
-    after = 0
-    while before < len(arrA) and after < len(arrB):
-        if arrA[before] > arrB[after]:
-            merged_arr.append(arrB[after])
-            after += 1
-        else:
-            merged_arr.append(arrA[before])
-            before += 1
-    return merged_arr + arrA[before:] + arrB[after:]
-
-
-def merge_sort(arr):
-    before, after = implement_pivot(arr)
-    if len(arr) <= 1:
-        return arr
-    else:
-        return merge(merge_sort(before), merge_sort(after))
-
-
-def timsort(arr):
-
-    return arr
+print(tim_sort(random.sample(range(200), 65)))
